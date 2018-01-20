@@ -5,6 +5,9 @@ import { BrowserRouter, Route, withRouter, Switch } from 'react-router-dom';
 
 import store from './store';
 import dataRoutes from './scenes/Data/routes';
+import authRoutes from './scenes/Auth/routes';
+import './Bootstrap.css';
+import './App.css';
 
 const App = () => (
   <Provider store={store}>
@@ -12,6 +15,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={()=>(<h1>Home</h1>)} />
       {dataRoutes}
+      {authRoutes}
     </Switch>
     </BrowserRouter>
   </Provider>

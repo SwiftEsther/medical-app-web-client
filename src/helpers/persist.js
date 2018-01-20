@@ -1,11 +1,12 @@
-const persist = { saveState: (state) => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem('state', serializedState);
-  } catch (err) {
-    console.warn(err);
-  }
-},
+const persist = {
+  saveState: (state) => {
+    try {
+      const serializedState = JSON.stringify(state);
+      localStorage.setItem('state', serializedState);
+    } catch (err) {
+      console.warn(err);
+    }
+  },
 
   loadState: () => {
     try {

@@ -16,6 +16,7 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-scripts": "1.0.17",
+    "reactstrap": "^5.0.0-alpha.4",
     "redux": "^3.7.1",
     "redux-form": "^7.2.1",
     "redux-logger": "^3.0.6",
