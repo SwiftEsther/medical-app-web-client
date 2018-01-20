@@ -1,5 +1,8 @@
-const API = 'https://react.didierfranc.com'
+const API = 'https://react.didierfranc.com';
+const urls = {
+  SIGNUP: `${API}/signup`,
+  LOGIN: `${API}/login`,
+  LOGIN_WITH_TOKEN: `${API}/token`,
+};
 
-export const SIGNUP = `${API}/signup`
-export const LOGIN = `${API}/login`
-export const LOGIN_WITH_TOKEN = `${API}/token`
+export default urls;
