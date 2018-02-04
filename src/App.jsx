@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect,Provider } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 import { BrowserRouter, Route, withRouter, Switch } from 'react-router-dom';
 
 import store from './store';
@@ -8,15 +8,18 @@ import dataRoutes from './scenes/Data/routes';
 import authRoutes from './scenes/Auth/routes';
 import './Bootstrap.css';
 import './App.css';
+import AuthCheck from './components/AuthCheck/index';
 
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={()=>(<h1>Home</h1>)} />
-      {dataRoutes}
-      {authRoutes}
-    </Switch>
+      <AuthCheck>
+        <Switch>
+          <Route exact path="/" component={() => (<h1>Home</h1>)} />
+          {dataRoutes}
+          {authRoutes}
+        </Switch>
+      </AuthCheck>
     </BrowserRouter>
   </Provider>
 );

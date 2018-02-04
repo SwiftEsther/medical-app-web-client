@@ -10,10 +10,6 @@ let RegisterForm = props => {
         Registeration Page
       </h1>
       <div className="form-label-group">
-        <label htmlFor="matricNo">Matric No.</label>
-        <Field className="form-control" name="matricNo" id="matricNo" component="input" type="text" />
-      </div>
-      <div className="form-label-group">
         <label htmlFor="password">Password</label>
         <Field className="form-control" name="password" id="password" component="input" type="password" />
       </div>
