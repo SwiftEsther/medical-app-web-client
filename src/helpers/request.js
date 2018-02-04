@@ -11,6 +11,10 @@ const request = {
         body: JSON.stringify(body),
       });
       const data = await res.json();
+      if (data.status) {
+        dispatch({ type: failure });
+        return;
+      }
       dispatch({ type: success, data });
     } catch (e) {
       dispatch({ type: failure });
@@ -28,6 +32,10 @@ const request = {
         body: JSON.stringify(body),
       });
       const data = await res.json();
+      if (data.status) {
+        dispatch({ type: failure });
+        return;
+      }
       dispatch({ type: success, data });
     } catch (e) {
       dispatch({ type: failure });

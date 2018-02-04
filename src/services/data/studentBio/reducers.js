@@ -13,7 +13,7 @@ const defaultState = {
 };
 const add = (state = defaultState.add, action) => {
   switch (action.type) {
-    case types.REGISTER_REQUEST:
+    case types.STUDENT_BIO_REQUEST:
       return {
         ...state,
         status: {
@@ -22,7 +22,7 @@ const add = (state = defaultState.add, action) => {
           failure: false,
         },
       };
-    case types.REGISTER_SUCCESS:
+    case types.STUDENT_BIO_SUCCESS:
       return {
         ...state,
         status: {
@@ -32,7 +32,7 @@ const add = (state = defaultState.add, action) => {
         },
         data: action.data,
       };
-    case types.REGISTER_FAILURE:
+    case types.STUDENT_BIO_FAILURE:
       return {
         ...state,
         status: {
@@ -46,8 +46,8 @@ const add = (state = defaultState.add, action) => {
   }
 };
 
-const registerReducer = combineReducers({
+const studentBioReducer = combineReducers({
   add,
 });
 
-export default registerReducer;
+export default studentBioReducer;

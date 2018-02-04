@@ -1,22 +1,14 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form';
-import './RegisterForm.css';
+import './StudentBioForm.css';
 
-let RegisterForm = props => {
+let StudentBioForm = props => {
   return (
 
     <form className="form-register" onSubmit={props.handleSubmit}>
       <h1>
-        Registeration Page
+      Student Biodata Page
       </h1>
-      <div className="form-label-group">
-        <label htmlFor="password">Password</label>
-        <Field className="form-control" name="password" id="password" component="input" type="password" />
-      </div>
-      <div className="form-label-group">
-        <label htmlFor="confirmPassword">Confirm Password</label>
-        <Field className="form-control" name="confirmPassword" id="confirmPassword" component="input" type="password" />
-      </div>
       <div className="form-label-group">
         <label htmlFor="surname">Surname</label>
         <Field className="form-control" name="surname" id="surname" component="input" type="text" />
@@ -77,9 +69,9 @@ let RegisterForm = props => {
     </form>
   )
 }
-RegisterForm = reduxForm({
+StudentBioForm = reduxForm({
   // a unique name for the form
-  form: 'register'
-})(RegisterForm)
+  form: 'studentBio'
+})(StudentBioForm)
 
-export default RegisterForm;
+export default StudentBioForm;
