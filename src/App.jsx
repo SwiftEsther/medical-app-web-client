@@ -8,17 +8,20 @@ import dataRoutes from './scenes/Data/routes';
 import authRoutes from './scenes/Auth/routes';
 import './Bootstrap.css';
 import './App.css';
-import AuthCheck from './components/AuthCheck/index';
+import AuthCheck from './components/AuthCheck';
+import DashBoard from './components/DashBoard/index';
 
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <AuthCheck>
-        <Switch>
-          <Route exact path="/" component={() => (<h1>Home</h1>)} />
-          {dataRoutes}
-          {authRoutes}
-        </Switch>
+        <DashBoard role="Student">
+          <Switch>
+            <Route exact path="/" component={() => (<h1>Home</h1>)} />
+            {dataRoutes}
+            {authRoutes}
+          </Switch>
+        </DashBoard>
       </AuthCheck>
     </BrowserRouter>
   </Provider>
