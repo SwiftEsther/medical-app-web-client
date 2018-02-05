@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Treatment from './scenes/Treatment';
-import StudentBio from './scenes/StudentBio'
+import StudentBio from './scenes/StudentBio';
 
 const DataRouter = [
   // <Route key="home" exact path="/" component={Home} />,

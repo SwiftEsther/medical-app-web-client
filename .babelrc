@@ -19,7 +19,7 @@
       "transform-runtime", {
         "helpers": false,
         "polyfill": false
-      },
+      }
     ]
   ],
   "env": {

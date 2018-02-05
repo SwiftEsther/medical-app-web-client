@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form'
 import treatmentActions from '../../../../services/data/treatment/actions';
 import TreatmentForm from './components/TreatmentForm/';
+
 class Treatment extends Component {
-  
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit (values) {
+  handleSubmit(values) {
     this.props.add(values);
-    console.log(values);
-
   }
   render() {
-    
-
     return (
       <TreatmentForm onSubmit={this.handleSubmit} />
     );

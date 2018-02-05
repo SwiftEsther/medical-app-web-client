@@ -1,52 +1,55 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form'
 import studentBioActions from '../../../../services/data/studentBio/actions';
 import StudentBioForm from './components/StudentBioForm';
-class StudentBio extends Component {
 
+class StudentBio extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       disabled: true,
     };
   }
 
   handleSubmit(values) {
-    this.props.save(values)
+    this.props.save(values);
   }
 
-  handleEdit(values) {
+  handleEdit() {
     this.setState({
       disabled: false,
-    })
+    });
   }
 
-  handleDelete(values) {
-
-  }
+  // handleDelete() {
+  // }
 
   render() {
-
-    const flash = this.props.studentBio.flash;
-    const status = this.props.studentBio.status;
+    const { flash, status } = this.props.studentBio;
     return (
       <StudentBioForm
         flash={flash}
-        status = {status}
+        status={status}
         disabled={this.state.disabled}
         onSubmit={this.handleSubmit}
-        onEdit={this.handleEdit} />
+        onEdit={this.handleEdit}
+      />
     );
   }
 }
 
 StudentBio.propTypes = {
-  studentBio: PropTypes.object.isRequired,
+  studentBio: PropTypes.shape({
+    flash: PropTypes.string,
+    status: {
+      success: PropTypes.bool,
+      failure: PropTypes.bool,
+    },
+  }).isRequired,
   save: PropTypes.func.isRequired,
 };
 

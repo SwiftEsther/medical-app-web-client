@@ -1,0 +1,26 @@
+extends: airbnb
+env:
+  es6: true
+  browser: true
+  shared-node-browser: true
+  jest: true
+  serviceworker: true
+rules:
+  max-len:
+    - 0
+    - 200
+    - 2
+  react/jsx-filename-extension:
+    - error
+    - extensions:
+      - ".js"
+      - ".jsx"
+  jsx-a11y/label-has-for: off
+  no-console: error
+  no-underscore-dangle: error
+settings:
+  import/resolver:
+    node:
+      moduleDirectory:
+        - src/
+        - node_modules

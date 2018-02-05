@@ -23,7 +23,7 @@ const go = (state = defaultState.go, action) => {
         },
       };
     case types.LOGIN_SUCCESS:
-    localStorage.setItem('token', JSON.stringify(action.data));
+      localStorage.setItem('token', JSON.stringify(action.data));
       return {
         ...state,
         status: {

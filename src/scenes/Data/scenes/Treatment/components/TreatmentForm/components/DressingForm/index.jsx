@@ -1,15 +1,15 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React from 'react';
+import { Field } from 'redux-form';
 
-let DressingForm = props => {
-  const { id } = props
+const DressingForm = (props) => {
+  const { id } = props;
   const date = `${id}.date`;
   const dressings = `${id}.dressings`;
   const dateOfNextTreatment = `${id}.dateOfNextTreatment`;
   return (
 
-  <fieldset>
-  <legend>Dressing/Injection:</legend>
+    <fieldset>
+      <legend>Dressing/Injection:</legend>
       <div>
         <label htmlFor="date">Date</label>
         <Field name={date} component="input" type="date" />
@@ -23,7 +23,7 @@ let DressingForm = props => {
         <Field name={dateOfNextTreatment} component="input" type="datetime" />
       </div>
     </fieldset>
-  )
-}
+  );
+};
 
 export default DressingForm;

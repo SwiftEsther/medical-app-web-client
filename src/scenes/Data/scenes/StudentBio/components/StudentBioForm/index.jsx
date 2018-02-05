@@ -1,19 +1,18 @@
-import React from 'react'
+import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './StudentBioForm.css';
 
-let StudentBioForm = props => {
+const StudentBioForm = (props) => {
   let flash = null;
-  if (props.flash && props.status.success===true) {
+  if (props.flash && props.status.success === true) {
     flash = (
-      <div class="alert alert-success" role="alert">
+      <div className="alert alert-success" role="alert">
         {props.flash}
       </div>
     );
-  }
-  else if (props.flash && props.status.failure===true) {
+  } else if (props.flash && props.status.failure === true) {
     flash = (
-      <div class="alert alert-danger" role="alert">
+      <div className="alert alert-danger" role="alert">
         {props.flash}
       </div>
     );
@@ -42,7 +41,7 @@ let StudentBioForm = props => {
         <div className="form-label-group">
           <label htmlFor="sex">Sex</label>
           <Field disabled={props.disabled} className="form-control" name="sex" id="sex" component="select">
-            <option></option>
+            <option />
             <option value="male">Male</option>
             <option value="female">Female</option>
           </Field>
@@ -70,7 +69,7 @@ let StudentBioForm = props => {
         <div className="form-label-group">
           <label htmlFor="staffOrStudent">Staff/Student</label>
           <Field disabled={props.disabled} className="form-control" name="staffOrStudent" id="staffOrStudent" component="select">
-            <option></option>
+            <option />
             <option value="staff">Staff</option>
             <option value="student">Student</option>
           </Field>
@@ -90,11 +89,9 @@ let StudentBioForm = props => {
         <button className="btn btn-primary btn-block" type="submit">Submit</button>
       </form>
     </div>
-  )
-}
-StudentBioForm = reduxForm({
-  // a unique name for the form
-  form: 'studentBioForm'
-})(StudentBioForm)
+  );
+};
 
-export default StudentBioForm;
+export default reduxForm({
+  form: 'studentBioForm',
+})(StudentBioForm);
