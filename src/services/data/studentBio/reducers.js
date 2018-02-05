@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import types from './constants';
 
 const defaultState = {
-  add: {
+  studentBio: {
     status: {
       loading: false,
       success: false,
@@ -11,7 +11,7 @@ const defaultState = {
     data: {},
   },
 };
-const add = (state = defaultState.add, action) => {
+const studentBio = (state = defaultState.studentBio, action) => {
   switch (action.type) {
     case types.STUDENT_BIO_REQUEST:
       return {
@@ -31,23 +31,21 @@ const add = (state = defaultState.add, action) => {
           failure: false,
         },
         data: action.data,
+        flash: 'Data saved.',
       };
     case types.STUDENT_BIO_FAILURE:
       return {
         ...state,
         status: {
-          loading: true,
+          loading: false,
           success: false,
-          failure: false,
+          failure: true,
         },
+        flash: 'Error saving data.',
       };
     default:
       return state;
   }
 };
 
-const studentBioReducer = combineReducers({
-  add,
-});
-
-export default studentBioReducer;
+export default studentBio;

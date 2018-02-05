@@ -5,27 +5,50 @@ import { Field, reduxForm } from 'redux-form'
 import studentBioActions from '../../../../services/data/studentBio/actions';
 import StudentBioForm from './components/StudentBioForm';
 class StudentBio extends Component {
-  
-  constructor(props){
+
+  constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.state = {
+      disabled: true,
+    };
   }
-  handleSubmit (values) {
-    this.props.add(values)
-  }
-  render() {
-    
 
+  handleSubmit(values) {
+    this.props.save(values)
+  }
+
+  handleEdit(values) {
+    this.setState({
+      disabled: false,
+    })
+  }
+
+  handleDelete(values) {
+
+  }
+
+  render() {
+
+    const flash = this.props.studentBio.flash;
+    const status = this.props.studentBio.status;
     return (
-      <StudentBioForm onSubmit={this.handleSubmit} />
+      <StudentBioForm
+        flash={flash}
+        status = {status}
+        disabled={this.state.disabled}
+        onSubmit={this.handleSubmit}
+        onEdit={this.handleEdit} />
     );
   }
 }
 
 StudentBio.propTypes = {
   studentBio: PropTypes.object.isRequired,
-  add: PropTypes.func.isRequired,
+  save: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({ studentBio: state.studentBio });
-export default connect(mapStateToProps, { add: studentBioActions.add })(StudentBio);
+export default connect(mapStateToProps, { save: studentBioActions.save })(StudentBio);
