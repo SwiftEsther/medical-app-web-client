@@ -52,11 +52,11 @@ Login.defaultProps = {
 
 Login.propTypes = {
   login: PropTypes.shape({
-    go: {
-      data: {
+    go: PropTypes.shape({
+      data: PropTypes.shape({
         token: PropTypes.string,
-      },
-    },
+      }),
+    }),
   }),
   go: PropTypes.func.isRequired,
   history: PropTypes.shape({
