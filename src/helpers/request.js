@@ -1,3 +1,4 @@
+const API_URL = 'https://glacial-escarpment-58268.herokuapp.com';
 const loadToken = (request) => {
   const data = localStorage.getItem('token');
 
@@ -14,7 +15,7 @@ const request = {
   }) => {
     loadToken(this);
     try {
-      const res = await fetch(`http://localhost:1337/${path}`, {
+      const res = await fetch(`${API_URL}${path}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ const request = {
   }) => {
     loadToken(this);
     try {
-      const res = await fetch(`http://localhost:1337/${path}`, {
+      const res = await fetch(`${API_URL}${path}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ const request = {
   }) => {
     loadToken(this);
     try {
-      const res = await fetch(`http://localhost:1337/${path}`, {
+      const res = await fetch(`${API_URL}${path}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +84,7 @@ const request = {
   }) => {
     loadToken(this);
     try {
-      const res = await fetch(`http://localhost:1337/${path}`, {
+      const res = await fetch(`${API_URL}${path}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
