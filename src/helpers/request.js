@@ -4,6 +4,8 @@ const loadToken = (request) => {
   if (data) {
     const token = JSON.parse(data);
     request.token = token.token;
+  } else {
+    request.token = '';
   }
 };
 const request = {
@@ -16,12 +18,58 @@ const request = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: this.a.token,
+          Authorization: this.token,
         },
         body: JSON.stringify(body),
       });
       const data = await res.json();
-      if (data.status) {
+      if (data.status || res.status >= 400) {
+        dispatch({ type: failure });
+        return;
+      }
+      dispatch({ type: success, data });
+    } catch (e) {
+      dispatch({ type: failure });
+    }
+  },
+  put: async ({
+    path, body, success, failure, dispatch,
+  }) => {
+    loadToken(this);
+    try {
+      const res = await fetch(`http://localhost:1337/${path}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: this.token,
+        },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (data.status || res.status >= 400) {
+        dispatch({ type: failure });
+        return;
+      }
+      dispatch({ type: success, data });
+    } catch (e) {
+      dispatch({ type: failure });
+    }
+  },
+  delete: async ({
+    path, body, success, failure, dispatch,
+  }) => {
+    loadToken(this);
+    try {
+      const res = await fetch(`http://localhost:1337/${path}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: this.token,
+        },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (data.status || res.status >= 400) {
         dispatch({ type: failure });
         return;
       }
@@ -31,7 +79,7 @@ const request = {
     }
   },
   get: async ({
-    path, body, success, failure, dispatch,
+    path, success, failure, dispatch,
   }) => {
     loadToken(this);
     try {
@@ -39,9 +87,8 @@ const request = {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: this.a.token,
+          Authorization: this.token,
         },
-        body: JSON.stringify(body),
       });
       const data = await res.json();
       if (data.status) {
@@ -53,7 +100,6 @@ const request = {
       dispatch({ type: failure });
     }
   },
-  token: '',
 };
 
 

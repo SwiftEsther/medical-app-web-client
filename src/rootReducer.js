@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import { reducer as form } from 'redux-form';
 import treatment from './services/data/treatment/reducers';
-import studentBio from './services/data/studentBio/reducers';
-import login from './services/auth/login/reducers';
+import studentBio from './scenes/Data/scenes/StudentBio/reducers';
+import login from './scenes/Auth/scenes/Login/reducers';
 
 const rootReducer = combineReducers({
   treatment,
   studentBio,
   login,
-  form: formReducer,
+  form,
 });
 
 export default rootReducer;

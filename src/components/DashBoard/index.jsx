@@ -3,24 +3,29 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import './DashBoard.css';
 
+const logout = () => localStorage.removeItem('token');
 
 const Dashboard = (props) => {
   const navItems = [];
   let search = <input className="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" />;
-  if (props.roles === 'Student') {
-    search = null;
-    navItems.push(['/data/student-bio', 'Student Biodata']);
-    navItems.push(['/data/student-medical', 'Student Medical Examination']);
-  } else if (props.roles === 'Staff') {
-    search = null;
+  const data = localStorage.getItem('token');
+  if (data) {
+    if (props.roles === 'Student') {
+      search = null;
+      navItems.push(['/data/student-bio', 'Student Biodata']);
+      navItems.push(['/data/student-medical', 'Student Medical Examination']);
+    } else if (props.roles === 'Staff') {
+      search = null;
+    }
+    // else if (props.roles === 'Doctor') {
+
+    // } else if (props.roles === 'Nurse') {
+
+    // } else if (props.roles === 'Lab attendant') {
+
+    // }
   }
-  // else if (props.roles === 'Doctor') {
 
-  // } else if (props.roles === 'Nurse') {
-
-  // } else if (props.roles === 'Lab attendant') {
-
-  // }
   const navListComponent = navItems.map(item => (
     <li key={item[0]} className="nav-item">
       <NavLink className="nav-link" to={item[0]}>
@@ -38,7 +43,7 @@ const Dashboard = (props) => {
         {search}
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap">
-            <a className="nav-link" href="/">Sign out</a>
+            <NavLink className="nav-link" to="/auth/login" onClick={logout}>Sign out</NavLink>
           </li>
         </ul>
       </nav>

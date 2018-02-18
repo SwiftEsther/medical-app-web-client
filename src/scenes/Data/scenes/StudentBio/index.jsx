@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import studentBioActions from '../../../../services/data/studentBio/actions';
+import isEmpty from 'lodash/isEmpty';
+import studentBioActions from './actions';
 import StudentBioForm from './components/StudentBioForm';
 
 class StudentBio extends Component {
   constructor(props) {
     super(props);
+    this.props.read();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-    // this.handleDelete = this.handleDelete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+
+
     this.state = {
       disabled: true,
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    let disabled;
+    if (isEmpty(nextProps.studentBio.data)) {
+      disabled = false;
+    } else {
+      disabled = true;
+    }
+    this.setState({ disabled });
+  }
+
   handleSubmit(values) {
-    this.props.save(values);
+    if (isEmpty(this.props.studentBio.data)) {
+      this.props.create(values);
+    } else {
+      const { id } = this.props.studentBio.data;
+      this.props.update(values, id);
+    }
   }
 
   handleEdit() {
@@ -25,22 +44,31 @@ class StudentBio extends Component {
     });
   }
 
-  // handleDelete() {
-  // }
+  handleDelete() {
+    const { id } = this.props.studentBio.data;
+    this.props.delete(id);
+  }
 
   render() {
-    const { flash, status } = this.props.studentBio;
+    const { flash, status, data } = this.props.studentBio;
     return (
       <StudentBioForm
+        initialValues={data}
+        enableReinitialize
         flash={flash}
         status={status}
         disabled={this.state.disabled}
         onSubmit={this.handleSubmit}
         onEdit={this.handleEdit}
+        onDelete={this.handleDelete}
       />
     );
   }
 }
+
+StudentBio.defaultProps = {
+
+};
 
 StudentBio.propTypes = {
   studentBio: PropTypes.shape({
@@ -49,10 +77,19 @@ StudentBio.propTypes = {
       success: PropTypes.bool,
       failure: PropTypes.bool,
     }),
+    data: PropTypes.shape({
+      id: PropTypes.number,
+    }),
   }).isRequired,
-  save: PropTypes.func.isRequired,
+  create: PropTypes.func.isRequired,
+  read: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({ studentBio: state.studentBio });
-const mapActionToProps = { save: studentBioActions.save };
+const { create, read, update } = studentBioActions;
+const mapActionToProps = {
+  create, read, update, delete: studentBioActions.delete,
+};
 export default connect(mapStateToProps, mapActionToProps)(StudentBio);

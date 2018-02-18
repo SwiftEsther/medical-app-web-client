@@ -1,12 +1,8 @@
 const KEY = 'MEDICAL_APP_STATE';
 const persist = {
   saveState: (state) => {
-    try {
-      const serializedState = JSON.stringify(state);
-      localStorage.setItem(KEY, serializedState);
-    } catch (err) {
-      console.warn(err);
-    }
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem(KEY, serializedState);
   },
 
   loadState: () => {

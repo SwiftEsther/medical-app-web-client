@@ -1,18 +1,16 @@
 import types from './constants';
 
 const defaultState = {
-  studentBio: {
-    status: {
-      loading: false,
-      success: false,
-      failure: false,
-    },
-    data: {},
+  status: {
+    loading: false,
+    success: false,
+    failure: false,
   },
+  data: {},
 };
-const studentBio = (state = defaultState.studentBio, action) => {
+const loginReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case types.STUDENT_BIO_REQUEST:
+    case types.LOGIN_REQUEST:
       return {
         ...state,
         status: {
@@ -21,7 +19,8 @@ const studentBio = (state = defaultState.studentBio, action) => {
           failure: false,
         },
       };
-    case types.STUDENT_BIO_SUCCESS:
+    case types.LOGIN_SUCCESS:
+      localStorage.setItem('token', JSON.stringify(action.data));
       return {
         ...state,
         status: {
@@ -30,21 +29,19 @@ const studentBio = (state = defaultState.studentBio, action) => {
           failure: false,
         },
         data: action.data,
-        flash: 'Data saved.',
       };
-    case types.STUDENT_BIO_FAILURE:
+    case types.LOGIN_FAILURE:
       return {
         ...state,
         status: {
-          loading: false,
+          loading: true,
           success: false,
-          failure: true,
+          failure: false,
         },
-        flash: 'Error saving data.',
       };
     default:
       return state;
   }
 };
 
-export default studentBio;
+export default loginReducer;
