@@ -1,4 +1,4 @@
-const API_URL = 'http://glacial-escarpment-58268.herokuapp.com/';
+const API_URL = 'https://glacial-escarpment-58268.herokuapp.com/';
 const loadToken = (request) => {
   const data = localStorage.getItem('token');
 
