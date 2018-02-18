@@ -45,13 +45,14 @@ class StudentBio extends Component {
 StudentBio.propTypes = {
   studentBio: PropTypes.shape({
     flash: PropTypes.string,
-    status: {
+    status: PropTypes.shape({
       success: PropTypes.bool,
       failure: PropTypes.bool,
-    },
+    }),
   }).isRequired,
   save: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({ studentBio: state.studentBio });
-export default connect(mapStateToProps, { save: studentBioActions.save })(StudentBio);
+const mapActionToProps = { save: studentBioActions.save };
+export default connect(mapStateToProps, mapActionToProps)(StudentBio);
