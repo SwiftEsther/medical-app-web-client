@@ -13,7 +13,7 @@ const Dashboard = (props) => {
     if (props.roles === 'Student') {
       search = null;
       navItems.push(['/data/student-bio', 'Student Biodata']);
-      navItems.push(['/data/student-medical', 'Student Medical Examination']);
+      navItems.push(['/data/student-medical-examination', 'Student Medical Examination']);
     } else if (props.roles === 'Staff') {
       search = null;
     }
