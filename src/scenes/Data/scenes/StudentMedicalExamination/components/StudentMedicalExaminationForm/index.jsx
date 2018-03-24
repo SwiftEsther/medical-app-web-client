@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './StudentMedicalExaminationForm.css';
 import HealthStatus from './components/HealthStatus'; 
+<<<<<<< HEAD
 import FemaleStudents from './components/FemaleStudents'; 
 import SmokingStatus from './components/SmokingStatus';
 import Activities from './components/Activities';
@@ -14,6 +15,8 @@ import YellowFever from './components/ImmunizationComponents/YellowFever';
 import DPT from './components/ImmunizationComponents/DPT';
 import MMR from './components/ImmunizationComponents/MMR';
 import CSM from './components/ImmunizationComponents/CSM';
+=======
+>>>>>>> ea0a49ff517583c8960813b147024eb4a90de934
 
 const StudentBioForm = (props) => {
   let flash = null;
@@ -71,6 +74,7 @@ const StudentBioForm = (props) => {
         </div>
         <HealthStatus disabled={props.disabled} />
         <div className="form-label-group">
+<<<<<<< HEAD
           <label htmlFor="details">Give details of any serious illness, injuries, accidents, fractures or operations you have had</label>
           <Field
             disabled={props.disabled}
@@ -357,6 +361,15 @@ const StudentBioForm = (props) => {
           <DPT disabled={props.disabled} />
           <MMR disabled={props.disabled} />
           <CSM disabled={props.disabled} />
+        </div>
+          <label htmlFor="surname">Surname</label>
+          <Field
+            disabled={props.disabled}
+            className="form-control"
+            name="surname"
+            id="surname"
+            component="textarea"
+          />
         </div>
         <button className="btn btn-primary btn-block" type="submit">Submit</button>
       </form>
