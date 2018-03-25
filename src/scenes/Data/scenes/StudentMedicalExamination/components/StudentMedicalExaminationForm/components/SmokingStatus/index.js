@@ -10,12 +10,14 @@ class SmokingStatus extends Component {
       value: 'no',
       date: new Date()
     };
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   handleChange(result) {
     const { currentTarget: { value } } = result;
     this.setState({ value });
   }
+  handleDateChange = date=>this.setState({date});
   render() {
     let ifYes = null;
     if (this.state.value === 'yes') {
