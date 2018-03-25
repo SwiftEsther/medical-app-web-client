@@ -2,7 +2,6 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './StudentMedicalExaminationForm.css';
 import HealthStatus from './components/HealthStatus'; 
-<<<<<<< HEAD
 import FemaleStudents from './components/FemaleStudents'; 
 import SmokingStatus from './components/SmokingStatus';
 import Activities from './components/Activities';
@@ -15,8 +14,6 @@ import YellowFever from './components/ImmunizationComponents/YellowFever';
 import DPT from './components/ImmunizationComponents/DPT';
 import MMR from './components/ImmunizationComponents/MMR';
 import CSM from './components/ImmunizationComponents/CSM';
-=======
->>>>>>> ea0a49ff517583c8960813b147024eb4a90de934
 
 const StudentBioForm = (props) => {
   let flash = null;
@@ -74,7 +71,6 @@ const StudentBioForm = (props) => {
         </div>
         <HealthStatus disabled={props.disabled} />
         <div className="form-label-group">
-<<<<<<< HEAD
           <label htmlFor="details">Give details of any serious illness, injuries, accidents, fractures or operations you have had</label>
           <Field
             disabled={props.disabled}
