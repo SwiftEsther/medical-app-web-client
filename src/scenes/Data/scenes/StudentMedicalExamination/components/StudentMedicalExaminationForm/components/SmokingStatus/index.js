@@ -26,7 +26,7 @@ class SmokingStatus extends Component {
               <div>
                 <Field
                   disabled={this.props.disabled}
-                  className="form-control"
+                  className="form-control\"
                   name="smokingDatePicker"
                   id="smokingDatePicker"
                   component="date"
