@@ -366,7 +366,7 @@ const StudentBioForm = (props) => {
             id="surname"
             component="textarea"
           />
-        </div>
+                           
         <button className="btn btn-primary btn-block" type="submit">Submit</button>
       </form>
     </div>

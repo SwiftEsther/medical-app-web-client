@@ -12,6 +12,7 @@
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-date-picker": "file:react-date-picker",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.2.0",
@@ -22,7 +23,7 @@
     "redux-form": "^7.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "react-date-picker": "^1.2.1"
+    "yarn": "^1.5.1"
   },
   "devDependencies": {
     "eslint": "^4.15.0",

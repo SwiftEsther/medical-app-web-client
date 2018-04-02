@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import DatePicker from 'react-date-picker';
+import './SmokingStatus.css';
 
 class SmokingStatus extends Component {
   constructor() {
@@ -10,37 +10,38 @@ class SmokingStatus extends Component {
       value: 'no',
       date: new Date()
     };
-    this.handleDateChange = this.handleDateChange.bind(this);
   }
-
   handleChange(result) {
     const { currentTarget: { value } } = result;
     this.setState({ value });
   }
-  handleDateChange = date=>this.setState({date});
+  
   render() {
     let ifYes = null;
     if (this.state.value === 'yes') {
       ifYes = (
         <div className="form-label-group">
             <div>
-                <label htmlFor="smokingDate">Since when? </label>
-                <p><DatePicker
-                    onChange={this.handleChange}
-                    value={this.state.date}
-                /></p>
+              <label htmlFor="smokingDatePicker">Since when? </label>
+              <div>
+                <Field
+                  disabled={this.props.disabled}
+                  className="form-control"
+                  name="smokingDatePicker"
+                  id="smokingDatePicker"
+                  component="date"
+                />
+              </div>
             </div>
             <div>
-            <label htmlFor="smokeQuantity">
-            What quantity per day? 
-            </label>
-            <Field
+              <label htmlFor="smokeQuantity">What quantity per day? </label>
+              <Field
                 disabled={this.props.disabled}
                 className="form-control"
                 name="smokeQuantity"
                 id="smokeQuantity"
                 component="textarea"
-            />
+              />
             </div>
         </div>
       );

@@ -23,7 +23,7 @@ class Activities extends Component {
     }
   render() {
     let ifNotEmpty = null;
-    if (this.state.value != '') {
+    if (this.state.value !== '') {
       ifNotEmpty = (
         <div className="form-label-group">
           <label htmlFor="athleticPursuit">

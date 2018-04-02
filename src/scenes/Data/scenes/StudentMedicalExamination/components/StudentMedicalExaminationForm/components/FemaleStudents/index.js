@@ -3,7 +3,6 @@ import { Field } from 'redux-form';
 import DischargeDetails from './DischargeDetails'; 
 import MenstrualDisorders from './MenstrualDisorders';
 import DatePicker from 'react-date-picker';
-import DayPicker from 'react-day-picker';
 
 class FemaleStudents extends Component {
   constructor() {
