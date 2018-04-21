@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import studentMedicalExaminationActions from './actions';
-import StudentMedicalExaminationForm from './components/StudentMedicalExaminationForm';
+import StudentMedicalExaminationForm
+  from './components/StudentMedicalExaminationForm';
 
 class StudentMedicalExamination extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class StudentMedicalExamination extends Component {
 
   componentWillReceiveProps(nextProps) {
     let disabled;
-    if (isEmpty(nextProps.studentBio.data)) {
+    if (isEmpty(nextProps.studentMedicalExamination.data)) {
       disabled = false;
     } else {
       disabled = true;
@@ -30,10 +31,10 @@ class StudentMedicalExamination extends Component {
   }
 
   handleSubmit(values) {
-    if (isEmpty(this.props.studentBio.data)) {
+    if (isEmpty(this.props.studentMedicalExamination.data)) {
       this.props.create(values);
     } else {
-      const { id } = this.props.studentBio.data;
+      const { id } = this.props.studentMedicalExamination.data;
       this.props.update(values, id);
     }
   }
@@ -45,12 +46,12 @@ class StudentMedicalExamination extends Component {
   }
 
   handleDelete() {
-    const { id } = this.props.studentBio.data;
+    const { id } = this.props.studentMedicalExamination.data;
     this.props.delete(id);
   }
 
   render() {
-    const { flash, status, data } = this.props.studentBio;
+    const { flash, status, data } = this.props.studentMedicalExamination;
     return (
       <StudentMedicalExaminationForm
         initialValues={data}
@@ -71,7 +72,7 @@ StudentMedicalExamination.defaultProps = {
 };
 
 StudentMedicalExamination.propTypes = {
-  studentBio: PropTypes.shape({
+  studentMedicalExamination: PropTypes.shape({
     flash: PropTypes.string,
     status: PropTypes.shape({
       success: PropTypes.bool,
@@ -87,9 +88,11 @@ StudentMedicalExamination.propTypes = {
   delete: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ studentBio: state.studentBio });
+const mapStateToProps =
+ state => ({ studentMedicalExamination: state.studentMedicalExamination });
 const { create, read, update } = studentMedicalExaminationActions;
 const mapActionToProps = {
   create, read, update, delete: studentMedicalExaminationActions.delete,
 };
-export default connect(mapStateToProps, mapActionToProps)(StudentMedicalExamination);
+export default
+connect(mapStateToProps, mapActionToProps)(StudentMedicalExamination);

@@ -1,7 +1,7 @@
 import types from './constants';
 
 const defaultState = {
-  studentBio: {
+  studentMedicalExamination: {
     status: {
       loading: false,
       success: false,
@@ -10,9 +10,10 @@ const defaultState = {
     data: {},
   },
 };
-const studentBio = (state = defaultState.studentBio, action) => {
+const studentMedicalExamination
+= (state = defaultState.studentMedicalExamination, action) => {
   switch (action.type) {
-    case types.CREATE_STUDENT_BIO_REQUEST:
+    case types.CREATE_STUDENT_MEDICAL_REQUEST:
       return {
         ...state,
         status: {
@@ -21,7 +22,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
           failure: false,
         },
       };
-    case types.CREATE_STUDENT_BIO_SUCCESS:
+    case types.CREATE_STUDENT_MEDICAL_SUCCESS:
       return {
         ...state,
         status: {
@@ -32,7 +33,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
         data: action.data,
         flash: 'Data saved.',
       };
-    case types.CREATE_STUDENT_BIO_FAILURE:
+    case types.CREATE_STUDENT_MEDICAL_FAILURE:
       return {
         ...state,
         status: {
@@ -42,7 +43,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
         },
         flash: 'Error saving data.',
       };
-    case types.READ_STUDENT_BIO_REQUEST:
+    case types.READ_STUDENT_MEDICAL_REQUEST:
       return {
         ...state,
         status: {
@@ -51,7 +52,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
           failure: false,
         },
       };
-    case types.READ_STUDENT_BIO_SUCCESS:
+    case types.READ_STUDENT_MEDICAL_SUCCESS:
       return {
         ...state,
         status: {
@@ -62,7 +63,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
         data: action.data,
         flash: 'Data read.',
       };
-    case types.READ_STUDENT_BIO_FAILURE:
+    case types.READ_STUDENT_MEDICAL_FAILURE:
       return {
         ...state,
         status: {
@@ -72,7 +73,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
         },
         flash: 'No records found.',
       };
-    case types.UPDATE_STUDENT_BIO_REQUEST:
+    case types.UPDATE_STUDENT_MEDICAL_REQUEST:
       return {
         ...state,
         status: {
@@ -81,7 +82,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
           failure: false,
         },
       };
-    case types.UPDATE_STUDENT_BIO_SUCCESS:
+    case types.UPDATE_STUDENT_MEDICAL_SUCCESS:
       return {
         ...state,
         status: {
@@ -92,7 +93,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
         data: action.data,
         flash: 'Data updated.',
       };
-    case types.UPDATE_STUDENT_BIO_FAILURE:
+    case types.UPDATE_STUDENT_MEDICAL_FAILURE:
       return {
         ...state,
         status: {
@@ -102,7 +103,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
         },
         flash: 'Error updating data.',
       };
-    case types.DELETE_STUDENT_BIO_REQUEST:
+    case types.DELETE_STUDENT_MEDICAL_REQUEST:
       return {
         ...state,
         status: {
@@ -111,7 +112,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
           failure: false,
         },
       };
-    case types.DELETE_STUDENT_BIO_SUCCESS:
+    case types.DELETE_STUDENT_MEDICAL_SUCCESS:
       return {
         ...state,
         status: {
@@ -122,7 +123,7 @@ const studentBio = (state = defaultState.studentBio, action) => {
         data: {},
         flash: 'Data deleted.',
       };
-    case types.DELETE_STUDENT_BIO_FAILURE:
+    case types.DELETE_STUDENT_MEDICALFAILURE:
       return {
         ...state,
         status: {
@@ -137,4 +138,4 @@ const studentBio = (state = defaultState.studentBio, action) => {
   }
 };
 
-export default studentBio;
+export default studentMedicalExamination;

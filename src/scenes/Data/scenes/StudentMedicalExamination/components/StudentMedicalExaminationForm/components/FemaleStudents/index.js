@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
+import DischargeDetails from './DischargeDetails';
+import MenstrualDisorders from './MenstrualDisorders';
 
-class HealthStatus extends Component {
+class FemaleStudents extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
@@ -18,16 +20,19 @@ class HealthStatus extends Component {
     if (this.state.value === 'yes') {
       ifYes = (
         <div className="form-label-group">
-          <label htmlFor="reason">
-          Please state the reason for the admission,
-          name of the hospital and dates.
-          </label>
+          <DischargeDetails disabled={this.props.disabled} />
+          <MenstrualDisorders disabled={this.props.disabled} />
+          <label htmlFor="periodDate">On what date did your last menstrual period start? </label>
           <Field
             disabled={this.props.disabled}
-            className="form-control"
-            name="reason"
-            id="reason"
-            component="textarea"
+            name="lumpsDetails11"
+            id="lumpsDetails11"
+            component={({ input, meta, ...rest }) => (<input
+              type="date"
+              {...input}
+              {...rest}
+            />)
+            }
           />
         </div>
       );
@@ -37,14 +42,14 @@ class HealthStatus extends Component {
     return (
       <div>
         <div className="form-label-group">
-          <label htmlFor="admittedStatus">
-            Have you ever been admitted into a hospital?
+          <label htmlFor="femaleStudents">
+            Are you a female student?
           </label>
           <Field
             disabled={this.props.disabled}
             className="form-control"
-            name="admittedStatus"
-            id="admittedStatus"
+            name="femaleStudents"
+            id="femaleStudents"
             component="select"
             onChange={this.handleChange}
           >
@@ -58,4 +63,7 @@ class HealthStatus extends Component {
     );
   }
 }
-export default HealthStatus;
+// export default FemaleStudents;
+export default reduxForm({
+  form: 'studentMedicalForm',
+})(FemaleStudents);

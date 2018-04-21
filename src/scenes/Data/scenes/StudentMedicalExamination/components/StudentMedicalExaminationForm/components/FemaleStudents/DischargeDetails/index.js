@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
-class HealthStatus extends Component {
+class DischargeDetails extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
@@ -18,15 +18,14 @@ class HealthStatus extends Component {
     if (this.state.value === 'yes') {
       ifYes = (
         <div className="form-label-group">
-          <label htmlFor="reason">
-          Please state the reason for the admission,
-          name of the hospital and dates.
+          <label htmlFor="lumpsDetails">
+          Please give details and date:
           </label>
           <Field
             disabled={this.props.disabled}
             className="form-control"
-            name="reason"
-            id="reason"
+            name="lumpsDetails"
+            id="lumpsDetails"
             component="textarea"
           />
         </div>
@@ -37,14 +36,14 @@ class HealthStatus extends Component {
     return (
       <div>
         <div className="form-label-group">
-          <label htmlFor="admittedStatus">
-            Have you ever been admitted into a hospital?
+          <label htmlFor="lumps">
+            Have you ever had breast lump or nipple discharge?
           </label>
           <Field
             disabled={this.props.disabled}
             className="form-control"
-            name="admittedStatus"
-            id="admittedStatus"
+            name="lumps"
+            id="lumps"
             component="select"
             onChange={this.handleChange}
           >
@@ -58,4 +57,4 @@ class HealthStatus extends Component {
     );
   }
 }
-export default HealthStatus;
+export default DischargeDetails;
